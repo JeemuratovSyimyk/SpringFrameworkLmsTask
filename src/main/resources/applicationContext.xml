@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans.xsd
+http://www.springframework.org/schema/context
+http://www.springframework.org/schema/context/spring-context.xsd">
+
+
+    <context:property-placeholder location="classpath:application.properties"/>
+
+    <bean
+            id="pop"
+          class="org.example.Pop">
+    <property
+         name="foundationCentury" value="4">
+        </property>
+    </bean>
+
+    <bean
+        id="classic"
+        class="org.example.Classic">
+        <property
+                name="foundationCentury" value="6">
+        </property>
+        </bean>
+
+    <bean
+        id="singer"
+        class="org.example.Singer">
+        <property name="id" value="1"></property>
+        <property name="name" value="$ {The Weekend}"></property>
+        <property name="age" value="${age}"></property>
+        <property name="gender" value="${gender}"></property>
+        <property name="music" ref="${music}"></property>
+    </bean>
+
+    <bean
+        id="singer1"
+        class="org.example.Singer">
+
+        <property name="musics">
+            <list>
+                <ref bean="pop"/>
+                <ref bean="classic"/>
+            </list>
+        </property>
+
+    </bean>
+    </beans>
